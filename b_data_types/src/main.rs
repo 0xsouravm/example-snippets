@@ -16,7 +16,8 @@ fn main() {
     // char_example();
 
     // tuple_example();
-    array_example();
+    
+    // array_example();
 }
 
 fn i8_example() {
@@ -116,36 +117,36 @@ fn char_example() {
 }
 
 fn tuple_example() {
-    // println!("Tuple Example");
+    println!("Tuple Example");
 
-    // let person: (char, i32, f32) = ('A', 24, 100.50);
-    // println!("The value of person is: {:?}", person);
+    let person: (char, i32, f32) = ('A', 24, 100.50);
+    println!("The value of person is: {:?}", person);
 
-    // // Access elements by indices
-    // let name = person.0;
-    // let age = person.1;
-    // let salary = person.2;
+    // Access elements by indices
+    let name = person.0;
+    let age = person.1;
+    let salary = person.2;
 
-    // println!("The name of the person is: {}", name);
-    // println!("The age of the person is: {}", age);
-    // println!("The salary of the person is: {}\n", salary);
+    println!("The name of the person is: {}", name);
+    println!("The age of the person is: {}", age);
+    println!("The salary of the person is: {}\n", salary);
 
-    // // Destructuring
-    // println!("Destructuring");
-    // let (name, age, salary) = person;
-    // println!("The name of the person is: {}", name);
-    // println!("The age of the person is: {}", age);
-    // println!("The salary of the person is: {}\n", salary);
+    // Destructuring
+    println!("Destructuring");
+    let (name, age, salary) = person;
+    println!("The name of the person is: {}", name);
+    println!("The age of the person is: {}", age);
+    println!("The salary of the person is: {}\n", salary);
 
     // Mutable Tuple
-    // let mut mutable_tuple = (1, 2, 3);
-    // println!("The value of mutable_tuple is: {:?}", mutable_tuple);
+    let mut mutable_tuple = (1, 2, 3);
+    println!("The value of mutable_tuple is: {:?}", mutable_tuple);
 
-    // mutable_tuple.0 = 445159;
-    // println!("The mutated value of mutable_tuple is: {:?}", mutable_tuple);
+    mutable_tuple.0 = 445159;
+    println!("The mutated value of mutable_tuple is: {:?}", mutable_tuple);
 
-    // let tuple = (1, 2, 3);
-    // println!("The value of tuple is: {:?}", tuple);
+    let tuple = (1, 2, 3);
+    println!("The value of tuple is: {:?}", tuple);
 }
 
 fn array_example() {
