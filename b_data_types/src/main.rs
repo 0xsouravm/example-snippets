@@ -1,19 +1,22 @@
 fn main() {
-    i8_example();
-    i16_example();
-    i32_example();
-    i64_example();
-    i128_example();
+    // i8_example();
+    // i16_example();
+    // i32_example();
+    // i64_example();
+    // i128_example();
 
-    u8_example();
-    u16_example();
-    u32_example();
-    u64_example();
-    u128_example();
+    // u8_example();
+    // u16_example();
+    // u32_example();
+    // u64_example();
+    // u128_example();
 
-    boolean_example();
+    // boolean_example();
 
-    char_example();
+    // char_example();
+
+    // tuple_example();
+    array_example();
 }
 
 fn i8_example() {
@@ -110,4 +113,65 @@ fn char_example() {
 
     let z: char = '汉';
     println!("The value of z is: {}\n", z);
+}
+
+fn tuple_example() {
+    // println!("Tuple Example");
+
+    // let person: (char, i32, f32) = ('A', 24, 100.50);
+    // println!("The value of person is: {:?}", person);
+
+    // // Access elements by indices
+    // let name = person.0;
+    // let age = person.1;
+    // let salary = person.2;
+
+    // println!("The name of the person is: {}", name);
+    // println!("The age of the person is: {}", age);
+    // println!("The salary of the person is: {}\n", salary);
+
+    // // Destructuring
+    // println!("Destructuring");
+    // let (name, age, salary) = person;
+    // println!("The name of the person is: {}", name);
+    // println!("The age of the person is: {}", age);
+    // println!("The salary of the person is: {}\n", salary);
+
+    // Mutable Tuple
+    // let mut mutable_tuple = (1, 2, 3);
+    // println!("The value of mutable_tuple is: {:?}", mutable_tuple);
+
+    // mutable_tuple.0 = 445159;
+    // println!("The mutated value of mutable_tuple is: {:?}", mutable_tuple);
+
+    // let tuple = (1, 2, 3);
+    // println!("The value of tuple is: {:?}", tuple);
+}
+
+fn array_example() {
+    println!("Array Example");
+
+    let arr_of_numbers = [1, 2, 3, 4, 5];
+    println!("The value of arr_of_numbers is: {:?}", arr_of_numbers);
+
+    // Access Elements
+    let first_element = arr_of_numbers[0];
+    let second_element = arr_of_numbers[1];
+    let third_element = arr_of_numbers[2];
+
+    println!("The first element of arr_of_numbers is: {}", first_element);
+    println!("The second element of arr_of_numbers is: {}", second_element);
+    println!("The third element of arr_of_numbers is: {}\n", third_element);
+
+    // let some_decimal = 100.90_f32;
+    // let some_integer = 100u8;
+    // let some_large_integer = 100283472319857235i64;
+
+    let arr_of_repeated_elements = [0; 5];
+    let another_arr_of_repeated_elements: [i8; 15] = [0; 15];
+    let another_another_arr_of_repeated_elements = [0u8; 15];
+
+    println!("The value of arr_of_repeated_elements is: {:?}", arr_of_repeated_elements);
+    println!("The value of another_arr_of_repeated_elements is: {:?}\n", another_arr_of_repeated_elements);
+    println!("The value of another_another_arr_of_repeated_elements is: {:?}\n", another_another_arr_of_repeated_elements);
 }
