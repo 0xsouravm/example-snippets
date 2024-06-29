@@ -6,7 +6,6 @@ fn main() {
     // example6();
     // example7();
     // example8();
-    example9();
 }
 
 fn example1() {
@@ -99,17 +98,3 @@ fn example8() {
         }
     }
 }
-
-fn example9() {
-    let number = 10;
-    let result = if number > 5 {
-        "Greater";
-    } else {
-        "Smaller or Equal"
-    };
-    println!("{}", result);
-}
-
-// (10, 35.7, "hello")
-
-// 0 - 35.7
