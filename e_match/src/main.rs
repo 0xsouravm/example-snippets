@@ -48,8 +48,11 @@ fn match_tuple() {
     let tup = (1, 2, 3, 4);
 
     match tup {
+        // (_, _, _, _,) => println!("Tuple is 1, 2, 3, 4"),
+        (1, .., 3) => println!("Last element is 4"),
         (1, 2, 3, 4) => println!("Tuple is 1, 2, 3, 4"),
         (1, ..) => println!("First element is 1"),
+        (.., 3) => println!("Last element is 4"),
         (_, 2, ..) => println!("Second element is 2"),
         (_, _, 3, ..) => println!("Third element is 3"),
         (.., 4) => println!("Fourth element is 4"),
@@ -74,3 +77,18 @@ fn match_with_code_block() {
         _ => println!("a is something else"),
     }
 }
+
+
+
+
+
+
+
+// (1, 2, 4, 5, 6, 7, 8, 9, 10);
+// (1, 2, 4, 5, 1, 2, 3, 4, 6, 7, 8, 9, 10);
+// (1, 2, 6, 10);
+
+
+// (..)
+
+
