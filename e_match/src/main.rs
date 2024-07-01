@@ -104,6 +104,7 @@ fn match_multiple() {
     match a {
         3 | 8 | 203 => {println!("a is 3, 8, or 203")},
         _ => println!("a is something else"),
+        // Wildcard Pattern
     }
 }
 
