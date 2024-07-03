@@ -150,7 +150,11 @@ struct Library {
 }
 
 struct Book {
+    author: String,
+    book_details: BookDetails,
+}
+
+struct BookDetails {
     name: String,
     isbn: String,
-    author: String
 }
