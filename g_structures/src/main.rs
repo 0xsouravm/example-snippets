@@ -158,3 +158,55 @@ struct BookDetails {
     name: String,
     isbn: String,
 }
+
+// Implement features/functionalites(methods and associated functions and [trait fns]) for our types.
+impl Student {
+    // methods - self as their first parameter
+    // associated functions - no self as their first parameter
+
+    // constuctor to create a new Student
+    fn new(sgpa: f32, age: u8, is_a_student: bool, sic: u32, year: u16) -> Student {
+        Student {
+            sgpa,
+            age,
+            is_a_student,
+            sic,
+            year
+        }
+    }
+
+    // printing the student's details
+    fn print_student_details(&self) {
+        // Print details
+        self.sgpa;
+        self.sic;
+        println!("Student Details: ");
+    }
+
+    fn compare_student_sgpa(&self, other: Student) {
+        if self.sgpa > other.sgpa {
+            println!("Self has a higher SGPA");
+        }
+        else {
+            println!("Other has a higher SGPA");
+        }
+    }
+}
+
+fn something_outside_impl() {
+    let raj: Student = Student::default();
+    let jay: Student = Student {
+        sgpa: 9.0,
+        age: 20,
+        is_a_student: true,
+        sic: 123456,
+        year: 2021
+    };
+
+    let new_student = Student::new(8.5, 20, true, 123456, 2021);
+    // raj.compare_student_sgpa(jay);
+    jay.compare_student_sgpa(raj);
+    // raj.print_student_details();
+}
+// &self - The instance of the struct on which that particular method is called.
+// associated functions are not bound to any instance. They operate on the type itself.
