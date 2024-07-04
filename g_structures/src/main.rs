@@ -228,3 +228,52 @@ fn assign_with_default() {
     println!("Student 2: {:?}", student_2);
     println!("Student 3: {:?}", student_3);
 }
+
+fn playground() {
+    struct Library {
+        name: String,
+        location: String,
+        books: Book, // Only one book in the library
+    }
+    
+    #[derive(Clone)]
+    struct Book {
+        author: String,
+        book_details: BookDetails,
+    }
+    
+    #[derive(Clone)]
+    struct BookDetails {
+        name: String,
+        isbn: String,
+    }
+
+    let book_details = BookDetails {
+        name: "The Alchemist".to_string(),
+        isbn: "1234567890".to_string()
+    };
+
+    let book = Book {
+        author: "Paulo Coelho".to_string(),
+        book_details
+    };
+
+    let library = Library {
+        name: "Central Library".to_string(),
+        location: "Bangalore".to_string(),
+        books: book.clone()
+    };
+
+    let new_library = Library {
+        name: "North Library".to_string(),
+        ..library
+    };
+
+    let another_new_library = Library {
+        books: Book {
+            author: "Ruskin Bond".to_string(),
+            ..book
+        },
+        ..new_library
+    };
+}
