@@ -59,3 +59,19 @@ fn choose_direction() {
         Direction::West => println!("West"),
     }
 }
+
+enum Shapes {
+    Circle(u8),
+    Rectangle(u8, u8),
+    Square(u8),
+    EquilateralTriangle(u8),
+}
+
+fn area(shape: Shapes) -> f32 {
+    match shape {
+        Shapes::Circle(radius) => (3 * radius * radius) as f32,
+        Shapes::Rectangle(length, breadth) => (length * breadth) as f32,
+        Shapes::Square(side) => (side * side) as f32,
+        Shapes::EquilateralTriangle(side) => (side * side) as f32,
+    }
+}
