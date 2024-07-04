@@ -75,3 +75,31 @@ fn area(shape: Shapes) -> f32 {
         Shapes::EquilateralTriangle(side) => (side * side) as f32,
     }
 }
+
+impl Shapes {
+    // method to find the area
+    fn area(&self) -> f32 {
+        match self {
+            Shapes::Circle(radius) => (3 * radius * radius) as f32,
+            Shapes::Rectangle(length, breadth) => (length * breadth) as f32,
+            Shapes::Square(side) => (side * side) as f32,
+            Shapes::EquilateralTriangle(side) => (side * side) as f32,
+        }
+    }
+
+    // Associated function to create a new circle from the given radius
+    fn return_circle(radius: u8) -> Self {
+        Shapes::Circle(radius)
+    }
+}
+
+fn find_area_of_shape() {
+    let circle = Shapes::Circle(10);
+    let area_of_circle = circle.area();
+
+
+    let new_circle = Shapes::return_circle(10);
+    let new_circle_area = new_circle.area();
+
+    let area_of_circle = area(circle);
+}
