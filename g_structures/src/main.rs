@@ -1,6 +1,6 @@
 fn main() {
     // student_with_arguments(8.5, 20, true, 123456, 2021);
-    struct_with_default();
+    assign_with_default();
 }
 
 // Named Field Struct
@@ -210,3 +210,21 @@ fn something_outside_impl() {
 }
 // &self - The instance of the struct on which that particular method is called.
 // associated functions are not bound to any instance. They operate on the type itself.
+
+fn assign_with_default() {
+    let student_1 = Student::new(8.5, 20, true, 123456, 2021);
+    let student_2 = Student {
+        sgpa: 4.56,
+        ..student_1
+    };
+
+    let student_3 = Student {
+        sgpa: 6.79,
+        age: 46,
+        ..Student::default()
+    };
+
+    println!("Student 1: {:?}", student_1);
+    println!("Student 2: {:?}", student_2);
+    println!("Student 3: {:?}", student_3);
+}
