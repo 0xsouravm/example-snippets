@@ -165,7 +165,7 @@ impl Student {
     // associated functions - no self as their first parameter
 
     // constuctor to create a new Student
-    fn new(sgpa: f32, age: u8, is_a_student: bool, sic: u32, year: u16) -> Student {
+    pub fn new(sgpa: f32, age: u8, is_a_student: bool, sic: u32, year: u16) -> Student {
         Student {
             sgpa,
             age,
@@ -229,6 +229,26 @@ fn assign_with_default() {
     println!("Student 3: {:?}", student_3);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 fn playground() {
     struct Library {
         name: String,
@@ -277,3 +297,24 @@ fn playground() {
         ..new_library
     };
 }
+
+
+// Benefits of using impls;
+// 1. Organization: Functions defined within an impl block are clearly associated with the type. 
+//                  This makes the code more organized and easier to navigate.
+
+// 2. Method syntax(instance.method_name()): Functions defined in a impl block can be called using the method 
+//                                           syntax. This makes the code more intuitive and concise.
+
+// 3. Access to self: Functions defined in an impl block have access to the instance of the type using 
+//                    the self keyword. This allows the functions to operate on the data of the instance. 
+//                    Essential for OOP patterns.
+
+// 4. Encapsulation: Hide some functions and expose others.
+
+// 5. Trait implementation: Implementing traits for a type requires the use of impl blocks. This allows 
+//                          the type to inherit the behavior defined in the trait.
+
+// 6. Associated functions: Functions defined in an impl block that do not take self as a parameter are 
+//                          called associated functions. These functions are called using the type name 
+//                          and are useful for creating new instances of the type.
