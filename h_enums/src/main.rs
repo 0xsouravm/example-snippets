@@ -4,6 +4,13 @@ fn main() {
 
 // Enums: Allow you to define a type by enumerating its possible variants / a set of named values that are possible for the type.
 
+enum HeterogeneousList {
+    Integer(i32),
+    Float(f32),
+    Text(String),
+    RandomTypes(bool, char, i32, i8, f64)
+}
+
 enum Direction {
     North,
     East,
@@ -103,3 +110,57 @@ fn find_area_of_shape() {
 
     let area_of_circle = area(circle);
 }
+
+enum GameMoves {
+    Fireball,
+    IcicleShower,
+    WindSlash,
+    EarthWall,
+    BlindingLight // Variant
+}
+
+fn game_moves_example() {
+    let fire_move = GameMoves::Fireball;
+    let wind_move = GameMoves::WindSlash;
+    let earth_move = GameMoves::EarthWall;
+    let light_move = GameMoves::BlindingLight;
+    let ice_move = GameMoves::IcicleShower;
+
+    let another_fire_move = GameMoves::Fireball;
+
+    // let some_integer = 100;
+
+    let some_random_move = GameMoves::WindSlash;
+    // match some_integer {
+    //     100 => println!("It is 100"),
+    //     _ => println!("It is not 100")
+    // }
+
+    match fire_move {
+        GameMoves::Fireball => println!("Fireball"),
+        _ => println!("Not Fireball")
+    }
+
+    match some_random_move {
+        GameMoves::Fireball => println!("Fireball"),
+        GameMoves::IcicleShower => println!("IcicleShower"),
+        GameMoves::WindSlash => println!("WindSlash"),
+        GameMoves::EarthWall => println!("EarthWall"),
+        GameMoves::BlindingLight => println!("BlindingLight"),
+    }
+}
+
+// enum SomeEnum {
+//     Variant1: i32
+//     Variant2: u32,
+// }
+
+// struct Student {
+//     var1: i32,
+//     var2: u32
+// }
+
+// enum AnotherEnum {
+//     VariantWithTypes { var1: i32 }, // Struct Variant
+//     VariantWithTypes: i32
+// }
