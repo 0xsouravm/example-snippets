@@ -1,3 +1,5 @@
+use std::arch::aarch64::vraddhn_high_s64;
+
 fn main() {
     // println!("Hello, world!");
 }
@@ -160,7 +162,18 @@ fn game_moves_example() {
 //     var2: u32
 // }
 
-// enum AnotherEnum {
-//     VariantWithTypes { var1: i32 }, // Struct Variant
-//     VariantWithTypes: i32
-// }
+enum AnotherEnum {
+    VariantWithTypes { var1: i32 }, // Struct Variant
+    // VariantRegular(i32, u32), // Tuple Variant
+    // Rectangle { length: u32, breadth: u32 },
+    // Circle { radius: u32 },
+    // CircleWithDiameter { diameter: u32 },
+}
+
+fn struct_variant_example() {
+    let variant_with_types = AnotherEnum::VariantWithTypes { var1: 10 };
+    
+    match variant_with_types {
+        AnotherEnum::VariantWithTypes { var1 } => println!("VariantWithTypes: {}", var1),
+    }
+}
