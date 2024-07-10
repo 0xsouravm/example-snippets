@@ -1,6 +1,8 @@
 // Traits: allow types to implement certain methods that extend their functionality
 // To Restrict
 
+use std::fmt::Debug;
+
 struct Car {
     model: String,
     year: u32,
@@ -204,27 +206,63 @@ fn main() {
 //     }
 // }
 
-struct Student {
-    name: String
+// struct Student {
+//     name: String
+// }
+
+// impl Student {
+//     fn new(name: String) -> Student {
+//         Student {
+//             name
+//         }
+//     }
+
+//     fn print_name(&self) {
+//         println!("{}", self.name);
+//     }
+
+//     fn random() {
+//         println!("Random");
+//     }
+// }
+
+// fn abc() {
+//     let student = Student::new(String::from("John"));
+//     student.print_name();
+// }
+
+// Trait Bounds - Bounds generic types to implement certain traits to be allowed use.
+
+// Debug is a trait
+// All types that implement the Debug trait can be used with "Debug Print".
+
+// Issue: The generic function is printing values using the "Debug Print". 
+// But not all types can be printed using the Debug Print.
+// So the compiler is worried that this function might receive a type that cannot be printed using the Debug Print.
+
+// Limit this function to only accept types that implement the "Debug" trait.
+
+fn generic_function<T: Debug>(value1: T) {
+    println!("{:?}", value1); // It is asking for a trait bound
 }
 
-impl Student {
-    fn new(name: String) -> Student {
-        Student {
-            name
-        }
-    }
-
-    fn print_name(&self) {
-        println!("{}", self.name);
-    }
-
-    fn random() {
-        println!("Random");
-    }
+struct Point<T> {
+    x: T,
+    y: T,
 }
 
-fn abc() {
-    let student = Student::new(String::from("John"));
-    student.print_name();
+fn test_trait_bounds() {
+    generic_function(34);
+    generic_function(true);
+    generic_function(60.45);
 }
+
+// office {
+//     Boss - Lounge
+//     Manager - Lounge
+//     Employee - No Lounge
+// }
+
+// fn access_lounge<T: Manager>(person: T){
+//     println!("Welcome to the lounge");
+// }
