@@ -270,6 +270,8 @@ fn main() {
 // Unit Structs
 struct Dog;
 struct Cat;
+
+#[derive(Default)]
 struct Cow {
     name: String,
 }
@@ -304,13 +306,38 @@ impl Animal for Dog {
         println!("2");
     }
 
-    fn type_of_animal() {
-        println!("Dog");
-    }
-
     // fn func() {
     //     print!("weohfwegr");
     // }
+}
+
+impl Animal for Cow {
+    fn sound(&self) {
+        println!("Moo Moo");
+    }
+
+    fn num_legs(&self) {
+        println!("4");
+    }
+
+    fn num_eyes(&self) {
+        println!("2");
+    }
+}
+
+impl Animal for Cat {
+    fn sound(&self) {
+        println!("Meow Meow");
+    }
+
+    fn num_legs(&self) {
+        println!("4");
+    }
+
+    fn num_eyes(&self) {
+        println!("2");
+    }
+
 }
 
 fn animal_example() {
@@ -327,14 +354,14 @@ fn animal_example() {
     dog.num_legs();
     dog.num_eyes();
 
-    Dog::type_of_animal();
+    // Dog::type_of_animal();
 }
 
 trait Animal {
     fn sound(&self);
     fn num_legs(&self);
     fn num_eyes(&self);
-    fn type_of_animal();
+    // fn type_of_animal();
 }
 
 trait Feline {
@@ -469,4 +496,30 @@ fn test_trait_bounds() {
     advance_generic_function(Cow {
         name: String::from("Gauri"),
     });
+}
+
+// Dynamic Dispatch - The compiler does not know at compile time which function to call. It is decided in the Runtime.
+// Static Dispatch - The compiler knows at compile time which function to call.
+
+fn dyn_dispatch_example() {
+    let cow = Cow {
+        name: String::from("Gauri"),
+    };
+    
+    cow.sound();
+
+    let array_of_cows: [Cow; 5] = [Cow::default(), Cow::default(), Cow::default(), Cow::default(), Cow::default()];
+    for cow in array_of_cows.iter() {
+        cow.sound();
+    }
+
+    // Monomorphization
+
+    // Smart Pointers - Box / &
+    // Reference[Pointer]
+    let array_of_animals: [&dyn Animal; 5] = [&Dog, &Dog, &Cat, &Cat, &Cow::default()];
+    for animal in array_of_animals.iter() {
+        animal.sound();
+    }
+    // Any type that implements the Animal trait can be used to call the sound function.
 }
