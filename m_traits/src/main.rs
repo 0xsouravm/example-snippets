@@ -242,7 +242,7 @@ fn main() {
 
 // Limit this function to only accept types that implement the "Debug" trait.
 
-fn generic_function<T: Debug>(value1: T) {
+fn generic_function<T: std::fmt::Debug>(value1: T) {
     println!("{:?}", value1); // It is asking for a trait bound
 }
 
@@ -266,3 +266,82 @@ fn test_trait_bounds() {
 // fn access_lounge<T: Manager>(person: T){
 //     println!("Welcome to the lounge");
 // }
+
+// Unit Structs
+struct Dog;
+struct Cat;
+struct Cow;
+
+impl Cow {
+    fn has_horns(&self) -> bool {
+        true
+    }
+}
+
+impl Dog {
+    fn does_bark(&self) -> bool{
+        true
+    }
+
+    fn likes_bones(&self) -> bool {
+        true
+    }
+}
+
+// impl Trait for Type. ex: impl Human for Student, impl Human for Employee
+impl Animal for Dog {
+    fn sound(&self) {
+        println!("Woof Woof");
+    }
+
+    fn num_legs(&self) {
+        println!("4");
+    }
+
+    fn num_eyes(&self) {
+        println!("2");
+    }
+
+    fn type_of_animal() {
+        println!("Dog");
+    }
+
+    // fn func() {
+    //     print!("weohfwegr");
+    // }
+}
+
+fn animal_example() {
+    let dog = Dog;
+    let cat = Cat;
+    let cow = Cow;
+
+    dog.does_bark();
+    dog.likes_bones();
+
+    dog.sound();
+    dog.num_legs();
+    dog.num_eyes();
+
+    Dog::type_of_animal();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+trait Animal {
+    fn sound(&self);
+    fn num_legs(&self);
+    fn num_eyes(&self);
+    fn type_of_animal();
+}
