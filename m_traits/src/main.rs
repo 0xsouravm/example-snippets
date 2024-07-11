@@ -1,7 +1,7 @@
 // Traits: allow types to implement certain methods that extend their functionality
 // To Restrict
 
-use std::fmt::Debug;
+use std::fmt::{Debug, Display};
 
 struct Car {
     model: String,
@@ -242,20 +242,20 @@ fn main() {
 
 // Limit this function to only accept types that implement the "Debug" trait.
 
-fn generic_function<T: std::fmt::Debug>(value1: T) {
-    println!("{:?}", value1); // It is asking for a trait bound
-}
+// fn generic_function<T: std::fmt::Debug>(value1: T) {
+//     println!("{:?}", value1); // It is asking for a trait bound
+// }
 
-struct Point<T> {
-    x: T,
-    y: T,
-}
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
 
-fn test_trait_bounds() {
-    generic_function(34);
-    generic_function(true);
-    generic_function(60.45);
-}
+// fn test_trait_bounds() {
+//     generic_function(34);
+//     generic_function(true);
+//     generic_function(60.45);
+// }
 
 // office {
 //     Boss - Lounge
@@ -270,7 +270,9 @@ fn test_trait_bounds() {
 // Unit Structs
 struct Dog;
 struct Cat;
-struct Cow;
+struct Cow {
+    name: String,
+}
 
 impl Cow {
     fn has_horns(&self) -> bool {
@@ -314,7 +316,9 @@ impl Animal for Dog {
 fn animal_example() {
     let dog = Dog;
     let cat = Cat;
-    let cow = Cow;
+    let cow = Cow {
+        name: String::from("Gauri"),
+    };
 
     dog.does_bark();
     dog.likes_bones();
@@ -347,3 +351,122 @@ impl Feline for Cat {}
 //         println!("A Different Meow");
 //     }
 // }
+
+// For something(of some defined type) to be printed on the console, they must implement "Display" trait
+// For something(of some defined type) to be debug printed on the console, they must implement "Debug" trait
+
+// i32 is printed
+fn print_i32(value: i32) {
+    println!("{:?}", value);
+}
+
+// u8 is Printed
+fn print_u8(value: u8) {
+    println!("{:?}", value);
+}
+
+// impl Display for Dog {
+//     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+//         write!(f, "Dog")
+//     }
+// }
+
+impl Display for Cow {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.name)
+    }
+}
+
+// impl Debug for Dog {
+//     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+//         write!(f, "Dog")
+//     }
+// }
+
+impl Debug for Cow {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.name)
+    }
+}
+
+// impl Debug for Dog
+// fn print_dog(value: Dog) {
+//     println!("{:?}", value);
+// }
+
+// impl Display for Dog
+// fn print_dog(value: Dog) {
+//     println!("{}", value);
+// }
+
+// fn hello_dog(value: Dog) {
+//     println!("Hello from Dog!");
+// }
+
+// fn print_cat(value: Cat) {
+//     println!("{}", value);
+// }
+
+// fn print_cow(value: Cow) {
+//     println!("{}", value);
+// }
+
+// String is Printed
+fn hello_cow(value: Cow) {
+    println!("Hello from {}", value.name);
+}
+
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+fn test_printing() {
+    let cow = Cow {
+        name: String::from("Gauri"),
+    };
+    print_i32(34);
+    print_u8(100);
+    // print_dog(Dog);
+    // print_cat(Cat);
+    // print_cow(cow);
+    hello_cow(Cow {
+        name: String::from("Gauri"),
+    });
+    // generic_function(true);
+    // generic_function(60.45);
+}
+
+// Universal Set = All types
+// Allowed Set = Types that implement the Debug trait
+
+
+// 2000 *2
+// 10 *4
+// 4040 Rs
+
+// Arcade - Only 10 Rupees notes accepted
+// 40
+
+// T: Debug - Trait Bound
+fn generic_function<T: std::fmt::Debug>(value: T) {
+    println!("{:?}", value); // It is asking for a trait bound
+}
+
+// fn generic_function<T: Display>(value: T) {
+//     println!("{}", value); // It is asking for a trait bound
+// }
+
+fn advance_generic_function<T: Display + Debug>(value: T) {
+    println!("{:?}", value);
+    println!("{}", value);
+}
+
+fn test_trait_bounds() {
+    advance_generic_function(34);
+    advance_generic_function(true);
+    advance_generic_function(60.45);
+    advance_generic_function(Cow {
+        name: String::from("Gauri"),
+    });
+}
