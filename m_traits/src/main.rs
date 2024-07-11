@@ -326,22 +326,24 @@ fn animal_example() {
     Dog::type_of_animal();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 trait Animal {
     fn sound(&self);
     fn num_legs(&self);
     fn num_eyes(&self);
     fn type_of_animal();
 }
+
+trait Feline {
+    // Already Defined.
+    // Default Definition.
+    fn meow() {
+        println!("Meow Meow");
+    }
+}
+
+impl Feline for Cat {}
+// impl Feline for Cat {
+//     fn meow() {
+//         println!("A Different Meow");
+//     }
+// }
