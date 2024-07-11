@@ -1,7 +1,7 @@
 use std::arch::aarch64::vraddhn_high_s64;
 
 fn main() {
-    // println!("Hello, world!");
+    access_enum();
 }
 
 // Enums: Allow you to define a type by enumerating its possible variants / a set of named values that are possible for the type.
@@ -176,4 +176,31 @@ fn struct_variant_example() {
     match variant_with_types {
         AnotherEnum::VariantWithTypes { var1 } => println!("VariantWithTypes: {}", var1),
     }
+}
+
+#[derive(Debug)]
+enum Students {
+    Sidhartha,
+    Srinivas,
+    Alok,
+    Mahav,
+    Sambit
+}
+
+impl Students {
+    fn print_name(&self) {
+        match self {
+            Students::Sidhartha => println!("Student is Sidhartha"),
+            Students::Srinivas => println!("Srinivas"),
+            Students::Alok => println!("Alok"),
+            Students::Mahav => println!("Mahav"),
+            Students::Sambit => println!("Sambit"),
+        }
+    }
+}
+
+fn access_enum() {
+    let student = Students::Sidhartha;
+    println!("{:?}", student);
+    student.print_name();
 }
