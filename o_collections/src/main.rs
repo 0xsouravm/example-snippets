@@ -103,7 +103,7 @@ fn vector_contains() {
 
 fn vector_iteration() {
     let vector = vec![1, 2, 3, 4, 5];
-    for element in vector {
+    for element in vector.clone() {
         println!("Element: {}", element);
     }
 
