@@ -217,7 +217,7 @@ fn hashmap_iterations() {
     for (key, value) in hash_map.iter() {
         println!("Key: {}, Value: {}", key, value);
     }
-    
+
     for (key, value) in &hash_map {
         println!("Key: {}, Value: {}", key, value);
     }
