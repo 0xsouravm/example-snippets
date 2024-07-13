@@ -1,7 +1,8 @@
-use std::vec;
+use std::{ collections::{hash_map, HashMap}, vec };
+// std::collections::HashMap
 
 fn main() {
-    print_str();
+    create_hashmap();
 }
 
 // Vector 
@@ -125,4 +126,121 @@ fn print_str() {
     println!("a: {}", a);
     println!("b: {}", b);
     println!("c: {}", c);
+}
+
+// Hashmaps - Dictionaries
+// (Key - Value) Pair
+
+// Key -> Mapped to a Value
+// "Odisha"(key) -> "Bhubaneswar"(value)
+// To access "Bhubaneswar"(value) I would need "Odisha"(key)
+// Keys must be unique
+// Allocated on the Heap
+
+fn create_hashmap() {
+    let mut hash_map = HashMap::new(); // Similar to vector syntax - Vec::new()
+    // insert()
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+
+    // Inserting a different key for the same value
+    hash_map.insert("Not Anything", "Something");
+    
+    println!("Map: {:?}", hash_map);
+    // Inserting a different value for the same key. This updates the previous value for that key.
+    hash_map.insert("Anything", "Different Something");
+
+    println!("Map: {:?}", hash_map);
+}
+
+fn hashmap_remove() {
+    // remove("Key")
+    let mut hash_map = HashMap::new();
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+    println!("Map Before Removing: {:?}", hash_map);
+
+    let removed_value = hash_map.remove("Anything");
+    let non_existing_removed_value = hash_map.remove("NoKey");
+
+    println!("Removed Value: {:?}", removed_value);
+    println!("Non Existing Removed Value: {:?}", non_existing_removed_value);
+    println!("Map After Removing: {:?}", hash_map);
+}
+
+fn hashmap_get() {
+    let mut hash_map = HashMap::new();
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+    println!("Map: {:?}", hash_map);
+
+    // get("Key")
+    let got_value = hash_map.get("Odisha");
+    let non_existing_got_value = hash_map.get("Bihar");
+
+    println!("Got Value: {:?}", got_value);
+    println!("Non Existing Got Value: {:?}", non_existing_got_value);
+    println!("Map: {:?}", hash_map);
+}
+
+fn hashmap_contains() {
+    let mut hash_map = HashMap::new();
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+    println!("Map: {:?}", hash_map);
+
+    let contains_odisha = hash_map.contains_key("Odisha");
+    let contains_bihar = hash_map.contains_key("Bihar");
+
+    println!("Contains Odisha: {:?}", contains_odisha);
+    println!("Contains Bihar: {:?}", contains_bihar);
+}
+
+fn hashmap_length() {
+    let mut hash_map = HashMap::new();
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+    hash_map.insert("Jharkhand", "Capital of Jharkhand");
+    println!("Map: {:?}", hash_map);
+
+    let length = hash_map.len();
+    println!("Length of the Map: {:?}", length);
+}
+
+fn hashmap_iterations() {
+    let mut hash_map = HashMap::new();
+    hash_map.insert("Odisha", "Bhubaneswar");
+    hash_map.insert("Anything", "Something");
+    hash_map.insert("Jharkhand", "Capital of Jharkhand");
+    println!("Map: {:?}", hash_map);
+
+    for (key, value) in hash_map.iter() {
+        println!("Key: {}, Value: {}", key, value);
+    }
+    
+    for (key, value) in &hash_map {
+        println!("Key: {}, Value: {}", key, value);
+    }
+
+    for (key, value) in hash_map.clone() {
+        println!("Key: {}, Value: {}", key, value);
+    }
+
+    println!("Map: {:?}", hash_map);
+
+    for key in hash_map.keys() {
+        println!("Key: {}", key);
+    }
+
+    for value in hash_map.values() {
+        println!("Value: {}", value);
+    }
+
+    for (key, value) in &hash_map {
+        println!("Key: {}, Value: {}", key, value);
+    }
+
+    for (key, value) in hash_map {
+        println!("Key: {}, Value: {}", key, value);
+    }
 }
