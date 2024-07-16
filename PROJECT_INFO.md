@@ -12,3 +12,5 @@
    ```
 
 3. **[Clap Tutorial](https://www.youtube.com/watch?v=Ot3qCA3Iv_8)**
+
+4. **[MongoDB Rust Tutorial](https://www.mongodb.com/developer/languages/rust/rust-mongodb-crud-tutorial/)**
